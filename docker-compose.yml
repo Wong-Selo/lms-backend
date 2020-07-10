@@ -1,0 +1,48 @@
+version: "3"
+services:
+  api:
+    env_file:
+      - .env
+    build: images/node
+    image: lms_node:latest
+    container_name: lms_api
+    working_dir: /home/node/app
+    volumes:
+      - ./api:/home/node/app
+    command: ${API_NODE_COMMAND}
+    ports:
+      - ${API_PORT}:3000
+    links:
+      - database
+    networks:
+      - app-network
+  database:
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    networks:
+      - app-network
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    container_name: lms_adminer
+    restart: always
+    ports:
+      - ${ADMINER_PORT}:8080
+    links:
+      - database
+    networks:
+      - app-network
+    tty: true
+volumes:
+  node_modules: {}
+  data:
+    driver: local
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "grunt",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-group-routes": "^1.1.0",
+    "grunt": "^1.0.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-express-server": "^0.5.4",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "module-alias": "^2.2.2",
+    "morgan": "~1.9.1",
+    "pg": "^8.3.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@module": "app/module",
+    "@middleware": "app/middleware",
+    "@model": "app/model",
+    "@app": "app",
+    "@utils": "app/utils",
+    "@strings": "app/utils/strings.js"
+  }
+}
