@@ -9,18 +9,18 @@ class DBService {
     try {
       const connection = await this.dbConnection.createConnection();
       try {
-        const data = await connection.query(query, queryData);
+        const { rows } = await connection.query(query, queryData);
         await this.dbConnection.closeConnection(connection);
 
         return {
-          data: data,
+          data: rows,
           errors: null,
         };
       } catch (error) {
         await this.dbConnection.closeConnection(connection);
         return {
           data: null,
-          errors: error,
+          errors: { ...error, msg: error.stack.split("\n") },
         };
       }
     } catch (err) {

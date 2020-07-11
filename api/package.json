@@ -19,7 +19,8 @@
     "jade": "~1.11.0",
     "module-alias": "^2.2.2",
     "morgan": "~1.9.1",
-    "pg": "^8.3.0"
+    "pg": "^8.3.0",
+    "pino": "^6.3.2"
   },
   "_moduleAliases": {
     "@root": ".",

@@ -1,3 +1,11 @@
+"use strict";
+
+const UserController = require('./users.controller')
+
 module.exports = (app) => {
-  app.get('/users', (req, res) => res.send('Hello World!'))
+  const userController = new UserController()
+
+  app
+    .route('/users/list')
+    .get(userController.getAllUser)
 }
