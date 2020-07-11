@@ -2,7 +2,20 @@
   "general": {
     "success": "Success"
   },
+  "success": {
+    "login": "Login success"
+  },
   "errors": {
-    "bad_request": "Bad Request"
+    "bad_request": "Bad Request",
+    "user": {
+      "not_found": "User not found",
+      "confirm_password_missmatch": "Password and confirm password is missmatch",
+      "email_exist": "Email already exist",
+      "inactive": "User is not active"
+    },
+    "credential": {
+      "not_match": "Email and password not match"
+    },
+    "required": "$_variable is required"
   }
 }

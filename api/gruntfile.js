@@ -13,7 +13,7 @@ if(process.env.IS_READY != 'true'){
           livereload:false
         },
         dev: {
-          files:  [ './config/*.js','./*.js','./routes/*.js', './bin/*.js' ],
+          files:  [ './*.js','./app/*/*.js', './app/*/*/*.js', './routes/*.js', './bin/*.js' ],
           tasks:  [ 'express:dev' ],
           options: {
             spawn: false

@@ -2,7 +2,20 @@
   "general": {
     "success": "Success"
   },
+  "success": {
+    "login": "Berhasil masuk"
+  },
   "errors": {
-    "bad_request": "Bad Request"
+    "bad_request": "Bad Request",
+    "user": {
+      "not_found": "User tidak ditemukan",
+      "confirm_password_missmatch": "Password dan confirm password tidak sesuai",
+      "email_exist": "Email sudah ada",
+      "inactive": "User belum aktif"
+    },
+    "credential": {
+      "not_match": "Email and password tidak sesuai"
+    },
+    "required": "Diperlukan $_variable"
   }
 }
