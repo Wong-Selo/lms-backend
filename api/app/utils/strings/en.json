@@ -3,7 +3,8 @@
     "success": "Success"
   },
   "success": {
-    "login": "Login success"
+    "login": "Login success",
+    "email_verified": "Congratulation. Your email has been verified"
   },
   "errors": {
     "bad_request": "Bad Request",
@@ -16,6 +17,9 @@
     "credential": {
       "not_match": "Email and password not match"
     },
-    "required": "$_variable is required"
+    "required": "$_variable is required",
+    "token": {
+      "invalid": "Token is invalid"
+    }
   }
 }
