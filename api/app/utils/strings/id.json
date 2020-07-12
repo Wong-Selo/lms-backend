@@ -3,7 +3,8 @@
     "success": "Success"
   },
   "success": {
-    "login": "Berhasil masuk"
+    "login": "Berhasil masuk",
+    "email_verified": "Selamat. Email anda telah terverifikasi"
   },
   "errors": {
     "bad_request": "Bad Request",
@@ -16,6 +17,9 @@
     "credential": {
       "not_match": "Email and password tidak sesuai"
     },
-    "required": "Diperlukan $_variable"
+    "required": "Diperlukan $_variable",
+    "token": {
+      "invalid": "Token tidak valid"
+    }
   }
 }

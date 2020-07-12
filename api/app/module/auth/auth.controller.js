@@ -6,13 +6,16 @@ const UserModel = require("@model/user.model");
 const validator = require("@utils/validator");
 const jwt = require("jsonwebtoken");
 const { API_JWT_KEY, API_JWT_EXPIRE, URL_CHANGE_PASSWORD } = process.env;
+const SendEmail = require("@utils/email/send.email");
 
 class AuthController {
   constructor() {
     this.signIn = this.signIn.bind(this);
     this.signUp = this.signUp.bind(this);
+    this.verifyEmail = this.verifyEmail.bind(this);
 
     this.userModel = new UserModel();
+    this.sendEmail = new SendEmail();
   }
 
   async signIn(req, res) {
@@ -42,7 +45,7 @@ class AuthController {
         },
         req.strings.errors.credential.not_match
       );
-    
+
     if (!userData.is_active)
       return res.sendError(
         {
@@ -102,7 +105,56 @@ class AuthController {
     } = await this.userModel.createUser(dataToInsert);
     if (errorCreate) return res.sendError(errorCreate);
 
-    return res.sendSuccess(dataCreate);
+    // sending email to verification
+    const { success, error } = this.sendEmail.sendEmailVerify({ name, email });
+
+    if (error) return res.sendError(error);
+
+    return res.sendSuccess(success);
+  }
+
+  async verifyEmail(req, res) {
+    const { token } = req.query;
+    if (!token)
+      return res.sendError({
+        token: req.strings.errors.required.replace("$_variable", "token"),
+      });
+
+    try {
+      const { email } = jwt.verify(token, API_JWT_KEY);
+      if (!email) {
+        return res.sendError(
+          {
+            token: req.strings.errors.token.invalid,
+          },
+          req.strings.errors.token.invalid
+        );
+      }
+
+      const { data, errors } = await this.userModel.getUserByEmail(email);
+      if (errors) return res.sendError(errors);
+
+      if (!data)
+        return res.sendError(
+          {
+            email: req.strings.errors.user.not_found,
+          },
+          req.strings.errors.user.not_found
+        );
+      
+      // set user to active
+      const { errors: updateError } = await this.userModel.setActiveUser(email, 1)
+      if (updateError) return res.sendError(updateError)
+
+      return res.sendSuccess(req.strings.success.email_verified);
+    } catch (err) {
+      return res.sendError(
+        {
+          token: req.strings.errors.token.invalid,
+        },
+        req.strings.errors.token.invalid
+      );
+    }
   }
 }
 
