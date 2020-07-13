@@ -20,6 +20,11 @@
     "required": "Diperlukan $_variable",
     "token": {
       "invalid": "Token tidak valid"
+    },
+    "auth": {
+      "unauthorized": "Unauthorized",
+      "in_active": "Akun anda tidak aktif",
+      "suspended": "Akun anda telah disuspend"
     }
   }
 }

@@ -62,7 +62,21 @@ class UserModel {
     const query = `UPDATE ${this.table} SET updated_at = $1, is_active = $2 WHERE email = $3`;
     const result = await this.dbConnection.query(query, [NOW, isActive, email]);
 
-    return result
+    return result;
+  }
+
+  async updateBasicById(userId, data) {
+    let setTable = [];
+    for (const [key, value] of Object.entries(data)) {
+      setTable.push(`${key} = '${value}'`);
+    }
+
+    setTable = setTable.join(", ");
+
+    const query = `UPDATE ${this.table} SET ${setTable} WHERE user_uuid = $1`;
+    const result = await this.dbConnection.query(query, [userId]);
+
+    return result;
   }
 }
 
