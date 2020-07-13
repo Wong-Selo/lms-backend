@@ -7,7 +7,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const generalMiddleware = require("@middleware/general");
-const authMiddleware = require("@middleware/authentication");
 const apiRouter = require("./routes/api");
 
 const app = express();
@@ -23,7 +22,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(generalMiddleware);
-app.use(authMiddleware);
 
 app.get("/", (req, res) => res.send("Welcome to LMS API"));
 app.group("/api", (router) => {
