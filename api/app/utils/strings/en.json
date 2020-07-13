@@ -20,6 +20,11 @@
     "required": "$_variable is required",
     "token": {
       "invalid": "Token is invalid"
+    },
+    "auth": {
+      "unauthorized": "Unauthorized",
+      "in_active": "Your account is not active",
+      "suspended": "Your Account Status is Suspended"
     }
   }
 }
