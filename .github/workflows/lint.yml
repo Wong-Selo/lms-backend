@@ -8,6 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: cd api && npm -i
+      run: cd api && npm i
     - name: Run ESLint and Prettier
       run: npm run lint
