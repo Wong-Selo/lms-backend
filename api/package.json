@@ -4,13 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "grunt",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "lint:eslint": "eslint . --ext js --ignore-path .gitignore",
+    "lint:eslint:fix": "eslint --fix . --ext js --ignore-path .gitignore",
+    "lint:prettier": "prettier \"./**/*.js\" -l --ignore-path .gitignore",
+    "lint:prettier:fix": "prettier \"./**/*.js\" --write --ignore-path .gitignore",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:fix": "yarn lint:eslint:fix && yarn lint:prettier:fix"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "express": "~4.16.1",
     "express-group-routes": "^1.1.0",
     "grunt": "^1.0.4",
@@ -26,6 +34,7 @@
     "nodemon": "^2.0.4",
     "pg": "^8.3.0",
     "pino": "^6.3.2",
+    "prettier": "^2.0.5",
     "uuid": "^8.2.0"
   },
   "_moduleAliases": {
@@ -36,5 +45,10 @@
     "@app": "app",
     "@utils": "app/utils",
     "@strings": "app/utils/strings.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
   }
 }

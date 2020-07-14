@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const { Pool } = require('pg')
 
 module.exports = {
   connectDB: () => {
@@ -7,8 +7,8 @@ module.exports = {
       host: process.env.DB_HOST,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      max: 10,
-    });
-    return connection;
-  },
-};
+      max: 10
+    })
+    return connection
+  }
+}
