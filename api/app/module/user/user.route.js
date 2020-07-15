@@ -1,6 +1,6 @@
 'use strict'
 
-const UserController = require('./users.controller')
+const UserController = require('./user.controller')
 
 module.exports = (app) => {
   const userController = new UserController()
@@ -10,6 +10,6 @@ module.exports = (app) => {
   app.route('/users/create').post(userController.createUser)
   app.route('/users/delete/:id').delete(userController.deleteUser)
   app.route('/users/update/:id').put(userController.updateById)
-  app.route('/users/profile').get(userController.getProfile)
+  app.route('/users/logged').get(userController.getDetailUserByToken)
   app.route('/users/profile').put(userController.updateLoggedUser)
 }
