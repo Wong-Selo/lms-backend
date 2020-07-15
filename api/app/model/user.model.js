@@ -1,10 +1,12 @@
 const DBConnection = require('@utils/database')
+const Query = require('@utils/query')
 const NOW = new Date()
 const UUID = require('uuid').v4()
 
 class UserModel {
   constructor() {
     this.dbConnection = new DBConnection()
+    this.query = new Query()
     this.table = 'users'
   }
 
@@ -34,19 +36,17 @@ class UserModel {
   }
 
   async createUser(data) {
-    const columnToInsert = [
-      'user_uuid',
-      'name',
-      'email',
-      'password',
-      'created_at',
-      'updated_at'
-    ]
+    const dataObject = {
+      user_uuid: UUID,
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      created_at: NOW.toISOString(),
+      updated_at: NOW.toISOString()
+    }
 
-    const dataToInsert = [UUID, data.name, data.email, data.password, NOW, NOW]
-
-    const query = `INSERT INTO ${this.table}(${columnToInsert}) VALUES ($1, $2, $3, $4, $5, $6)`
-    const result = await this.dbConnection.query(query, dataToInsert)
+    const query = this.query.makeInsertQuery(this.table, dataObject)
+    const result = await this.dbConnection.query(query)
 
     return result
   }
@@ -66,16 +66,12 @@ class UserModel {
   }
 
   async updateBasicById(userId, data) {
-    let setTable = []
-    for (const [key, value] of Object.entries(data)) {
-      setTable.push(`${key} = '${value}'`)
-    }
+    let updateCondition = [
+      { column: 'user_uuid', operator: '=', value: userId }
+    ]
+    let query = this.query.makeUpdateQuery(this.table, data, updateCondition)
 
-    setTable = setTable.join(', ')
-
-    const query = `UPDATE ${this.table} SET ${setTable} WHERE user_uuid = $1`
-    const result = await this.dbConnection.query(query, [userId])
-
+    const result = await this.dbConnection.query(query)
     return result
   }
 }

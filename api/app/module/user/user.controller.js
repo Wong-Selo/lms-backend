@@ -12,7 +12,7 @@ class UserController {
     this.deleteUser = this.deleteUser.bind(this)
     this.getDetailUser = this.getDetailUser.bind(this)
     this.updateById = this.updateById.bind(this)
-    this.getProfile = this.getProfile.bind(this)
+    this.getDetailUserByToken = this.getDetailUserByToken.bind(this)
     this.updateLoggedUser = this.updateLoggedUser.bind(this)
 
     this.userModel = new UserModel()
@@ -159,7 +159,7 @@ class UserController {
     return res.sendSuccess(updateData)
   }
 
-  async getProfile(req, res) {
+  async getDetailUserByToken(req, res) {
     const { user_uuid: userId } = req.user
     const { data: user, erorrs: userError } = await this.userModel.getUserById(
       userId

@@ -1,5 +1,6 @@
-const userRoute = require('@module/users/users.route')
 const authRoute = require('@module/auth/auth.route')
+const userRoute = require('@module/user/user.route')
+const profileRoute = require('@module/profile/profile.route')
 
 const authMiddleware = require('@middleware/authentication')
 
@@ -10,4 +11,5 @@ module.exports = (app) => {
   app.use(authMiddleware)
 
   userRoute(app)
+  profileRoute(app)
 }
