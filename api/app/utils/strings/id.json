@@ -25,6 +25,12 @@
       "unauthorized": "Unauthorized",
       "in_active": "Akun anda tidak aktif",
       "suspended": "Akun anda telah disuspend"
+    },
+    "group": {
+      "group_exist": "Group $_variable sudah ada",
+      "group_doesnt_exist": "Group $_variable tidak ditemukan",
+      "already_joined": "User $_variable sudah bergabung",
+      "dont_have_permission": "Anda tidak mempunyai akses untuk melaukan aksi ini"
     }
   }
 }

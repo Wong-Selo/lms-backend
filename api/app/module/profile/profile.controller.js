@@ -75,7 +75,7 @@ class ProfileController {
 
     const {
       data: isExist,
-      error: getProfileError
+      errors: getProfileError
     } = await this.profileModel.getProfile(user_uuid)
     if (getProfileError) return res.sendError(getProfileError)
 
