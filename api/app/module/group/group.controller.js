@@ -157,11 +157,11 @@ class GroupController {
         },
         req.strings.errors.group.already_joined.replace('$_variable', user_uuid)
       )
-    
+
     /**
      * Validate non admin/owner can't add member
      */
-    if (! await this._canModifyGroup(reqUserId, group_uuid))
+    if (!(await this._canModifyGroup(reqUserId, group_uuid)))
       return res.sendError(req.strings.errors.group.dont_have_permission)
 
     const dataToInsert = {
