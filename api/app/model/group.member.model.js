@@ -30,6 +30,13 @@ class GroupMemberModel {
 
     return result
   }
+
+  async userHasAdmin(userId, groupId) {
+    const query = `SELECT * FROM ${this.table} WHERE user_uuid = $1 AND group_uuid = $2 AND is_admin = 1`
+    const result = await this.dbConnection.one(query, [userId, groupId])
+
+    return result
+  }
 }
 
 module.exports = GroupMemberModel

@@ -12,7 +12,7 @@ class GroupModel {
 
   async getGroupByUser(userId) {
     const query = `SELECT * FROM ${this.table} WHERE user_uuid = $1`
-    const result = await this.dbConnection(query, [userId])
+    const result = await this.dbConnection.query(query, [userId])
 
     return result
   }
@@ -41,6 +41,13 @@ class GroupModel {
   async getGroupByNameAndUser(groupName, userId) {
     const query = `SELECT * FROM ${this.table} WHERE group_name = $1 AND user_uuid = $2`
     const result = await this.dbConnection.one(query, [groupName, userId])
+
+    return result
+  }
+
+  async getGroupByIdAndUser(groupId, userId) {
+    const query = `SELECT * FROM ${this.table} WHERE group_uuid = $1 AND user_uuid = $2`
+    const result = await this.dbConnection.one(query, [groupId, userId])
 
     return result
   }

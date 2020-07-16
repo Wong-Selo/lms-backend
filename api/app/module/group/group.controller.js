@@ -12,9 +12,27 @@ class GroupController {
     this.groupModel = new GroupModel()
     this.groupMemberModel = new GroupMemberModel()
 
+    this._canModifyGroup = this._canModifyGroup.bind(this)
     this._generateGroupCode = this._generateGroupCode.bind(this)
     this.createGroup = this.createGroup.bind(this)
     this.addMember = this.addMember.bind(this)
+  }
+
+  async _canModifyGroup(userId, groupId) {
+    if (!userId || !groupId) return false
+
+    const { data: groupData } = await this.groupModel.getGroupByIdAndUser(
+      groupId,
+      userId
+    )
+    const { data: groupMemberData } = await this.groupMemberModel.userHasAdmin(
+      userId,
+      groupId
+    )
+
+    if (groupData || groupMemberData) return true
+
+    return false
   }
 
   _generateGroupCode(groupName) {
@@ -82,6 +100,7 @@ class GroupController {
   }
 
   async addMember(req, res) {
+    const { user_uuid: reqUserId } = req.user
     const { user_uuid, group_uuid } = req.body
 
     const requires = ['user_uuid', 'group_uuid']
@@ -138,6 +157,12 @@ class GroupController {
         },
         req.strings.errors.group.already_joined.replace('$_variable', user_uuid)
       )
+    
+    /**
+     * Validate non admin/owner can't add member
+     */
+    if (! await this._canModifyGroup(reqUserId, group_uuid))
+      return res.sendError(req.strings.errors.group.dont_have_permission)
 
     const dataToInsert = {
       user_uuid,

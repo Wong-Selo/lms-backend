@@ -29,7 +29,8 @@
     "group": {
       "group_exist": "Group $_variable already exist",
       "group_doesnt_exist": "Group $_variable does not exist",
-      "already_joined": "User $_variable has already joined"
+      "already_joined": "User $_variable has already joined",
+      "dont_have_permission": "You don't have permission to perform this action"
     }
   }
 }
