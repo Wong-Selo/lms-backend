@@ -30,7 +30,10 @@
       "group_exist": "Group $_variable sudah ada",
       "group_doesnt_exist": "Group $_variable tidak ditemukan",
       "already_joined": "User $_variable sudah bergabung",
-      "dont_have_permission": "Anda tidak mempunyai akses untuk melaukan aksi ini"
+      "dont_have_permission": "Anda tidak mempunyai akses untuk melaukan aksi ini",
+      "not_member": "User $_variable bukan member",
+      "group_full": "Group sudah penuh",
+      "decrease_max_member": "Maksimal member harus diatas jumlah member saat ini. Hapus beberapa member untuk mengurangi jumlah member. Member saat ini: $_current_max; max_member: $_max_member"
     }
   }
 }

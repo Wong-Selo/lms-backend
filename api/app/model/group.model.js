@@ -51,6 +51,19 @@ class GroupModel {
 
     return result
   }
+
+  async updateGroup(data, groupId) {
+    const conditions = [{ column: 'group_uuid', operator: '=', value: groupId }]
+    const dataObject = {
+      ...data,
+      updated_at: NOW.toISOString()
+    }
+
+    let query = this.query.makeUpdateQuery(this.table, dataObject, conditions)
+
+    const result = await this.dbConnection.query(query)
+    return result
+  }
 }
 
 module.exports = GroupModel

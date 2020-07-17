@@ -44,7 +44,6 @@ class ProfileModel {
       { column: 'user_uuid', operator: '=', value: userId }
     ]
     let query = this.query.makeUpdateQuery(this.table, data, updateCondition)
-    console.log(query)
 
     const result = await this.dbConnection.query(query)
     return result
