@@ -37,6 +37,20 @@ class GroupMemberModel {
 
     return result
   }
+
+  async removeMember(userId, groupId) {
+    const query = `DELETE FROM ${this.table} WHERE user_uuid = $1 AND group_uuid = $2`
+    const result = await this.dbConnection.query(query, [userId, groupId])
+
+    return result
+  }
+
+  async getMemberByGroup(groupId) {
+    const query = `SELECT * FROM ${this.table} WHERE group_uuid = $1`
+    const result = await this.dbConnection.query(query, [groupId])
+
+    return result
+  }
 }
 
 module.exports = GroupMemberModel
