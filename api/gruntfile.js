@@ -16,6 +16,7 @@ module.exports = function (grunt) {
           './*.js',
           './app/*/*.js',
           './app/*/*/*.js',
+          './app/*/*/*/*.js',
           './routes/*.js',
           './bin/*.js'
         ],
