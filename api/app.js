@@ -7,7 +7,12 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const generalMiddleware = require('@middleware/general')
+const cors = require('cors')
 const apiRouter = require('./routes/api')
+
+// swagger
+const swaggerUi = require('swagger-ui-express')
+const openApiDocumentation = require('@utils/swagger/')
 
 const app = express()
 
@@ -23,7 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(generalMiddleware)
 
-app.get('/', (req, res) => res.send('Welcome to LMS API'))
+app.use(cors())
+
+app.get('/', (req, res) => res.send('Welome to LMS API'))
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation))
+
 app.group('/api', (router) => {
   apiRouter(router)
 })
