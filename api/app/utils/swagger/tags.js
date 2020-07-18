@@ -2,6 +2,9 @@ const tags = {
   tags: [
     {
       name: 'Authentication'
+    },
+    {
+      name: "Users"
     }
   ]
 }
