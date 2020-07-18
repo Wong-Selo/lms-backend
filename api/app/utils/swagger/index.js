@@ -6,8 +6,10 @@ const userDoc = require('./User/')
 const openApiDocumentaion = {
   ...basicInfo,
   ...tags,
-  ...authDoc,
-  ...userDoc
+  paths: {
+    ...authDoc.paths,
+    ...userDoc.paths
+  }
 }
 
 module.exports = openApiDocumentaion
