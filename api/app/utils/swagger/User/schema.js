@@ -23,7 +23,9 @@ const schemas = {
   CreateUser: {
     type: 'object',
     properties: {
-      name, email, password
+      name,
+      email,
+      password
     }
   },
   UpdateUser: {

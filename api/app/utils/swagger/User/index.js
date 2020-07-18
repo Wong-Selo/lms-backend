@@ -1,5 +1,5 @@
 const schemas = require('./schema')
-const { responses, parameters } = require('../other') 
+const { responses, parameters } = require('../other')
 const { token, limit, offset, q, userId } = parameters
 const { CreateUser, UpdateUser } = schemas
 
@@ -9,12 +9,7 @@ const userDoc = {
       get: {
         tags: ['Users'],
         description: 'List users',
-        parameters: [
-          token,
-          limit,
-          offset,
-          q
-        ],
+        parameters: [token, limit, offset, q],
         responses: { ...responses }
       }
     },
@@ -22,10 +17,7 @@ const userDoc = {
       get: {
         tags: ['Users'],
         description: 'Get user by userId',
-        parameters: [
-          token,
-          userId
-        ],
+        parameters: [token, userId],
         responses: { ...responses }
       }
     },
@@ -33,9 +25,7 @@ const userDoc = {
       post: {
         tags: ['Users'],
         description: 'Create user',
-        parameters: [
-          token
-        ],
+        parameters: [token],
         requestBody: {
           content: {
             'application/json': {
@@ -53,10 +43,7 @@ const userDoc = {
       delete: {
         tags: ['Users'],
         description: 'Delete user by userId',
-        parameters: [
-          token,
-          userId
-        ],
+        parameters: [token, userId],
         responses: { ...responses }
       }
     },
@@ -64,23 +51,20 @@ const userDoc = {
       put: {
         tags: ['Users'],
         description: 'Delete user by userId',
-        parameters: [
-          token,
-          userId
-        ],
+        parameters: [token, userId],
         requestBody: {
           content: {
             'application/json': {
               schema: {
                 ...UpdateUser,
                 required: ['name']
-              },
+              }
             }
-          },
+          }
         },
         responses: { ...responses }
       }
-    },
+    }
   }
 }
 

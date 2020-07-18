@@ -4,7 +4,7 @@ const tags = {
       name: 'Authentication'
     },
     {
-      name: "Users"
+      name: 'Users'
     }
   ]
 }
