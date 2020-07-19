@@ -5,6 +5,12 @@ const tags = {
     },
     {
       name: 'Users'
+    },
+    {
+      name: 'Profiles'
+    },
+    {
+      name: 'Groups'
     }
   ]
 }
