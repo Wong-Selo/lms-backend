@@ -44,6 +44,14 @@ const OtherObject = {
         type: 'string',
         example: 'ce7aa07a-6066-46d7-a3a2-b9b3fe9c6e6b'
       }
+    },
+    groupId: {
+      name: 'groupId',
+      in: 'path',
+      schema: {
+        type: 'string',
+        example: 'ce7aa07a-6066-46d7-a3a2-b9b3fe9c6e6b'
+      }
     }
   },
   responses: {

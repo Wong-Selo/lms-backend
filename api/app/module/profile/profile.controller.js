@@ -1,5 +1,6 @@
 'use strict'
 
+const validator = require('@utils/validator')
 const UserModel = require('@model/user.model')
 const ProfileModel = require('@model/profile.model')
 const ObjectManipulation = require('@utils/object.manipulation')
@@ -25,6 +26,11 @@ class ProfileController {
       facebook,
       instagram
     } = req.body
+
+    const requires = ['bio']
+    let errors = validator.checkBody(req.body, requires, req.strings)
+    if (errors) return res.sendError(errors)
+
     const {
       data: isExist,
       errors: getProfileError
@@ -50,9 +56,12 @@ class ProfileController {
       )
       if (createError) return res.sendError(createError)
     } else {
+      const currentBirthDate = isExist.birth_date
+        ? isExist.birth_date.toISOString()
+        : null
       const data = {
         bio: bio || isExist.bio,
-        birth_date: birth_date || isExist.birth_date,
+        birth_date: birth_date || currentBirthDate,
         website: website || isExist.website,
         phone: phone || isExist.phone,
         twitter: twitter || isExist.twitter,
