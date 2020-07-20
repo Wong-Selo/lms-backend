@@ -45,7 +45,7 @@ class QuizzController {
     const { user_uuid } = req.user
     let {
       group_uuid,
-      name: quizz_name,
+      name: quiz_name,
       description: quiz_description,
       duration,
       is_private
@@ -78,13 +78,13 @@ class QuizzController {
           )
         )
 
-      await this._userHasMember(groupId, null)
+      await this._userHasMember(req, res, group_uuid, null)
     }
 
     const dataToInsert = {
       group_uuid,
       user_uuid,
-      quizz_name,
+      quiz_name,
       quiz_description,
       duration,
       is_private
@@ -97,7 +97,7 @@ class QuizzController {
     } = await this.quizzModel.createQuizz(dataToInsert)
     if (insertError) return res.sendError(insertError)
 
-    return res.sendSuccess({ ...insertId, ...data })
+    return res.sendSuccess({ insertId: insertId, ...data })
   }
 }
 

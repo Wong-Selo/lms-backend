@@ -18,7 +18,7 @@ exports.up = function (db, callback) {
   return db.createTable(
     'quizzes',
     {
-      quizz_uuid: {
+      quiz_uuid: {
         type: 'string',
         primaryKey: true,
         length: 36
@@ -51,11 +51,11 @@ exports.up = function (db, callback) {
           notNull: false
         }
       },
-      quizz_name: {
+      quiz_name: {
         type: 'string',
         notNull: true
       },
-      quizz_description: {
+      quiz_description: {
         type: 'text',
         notNull: false
       },
