@@ -16,52 +16,30 @@ exports.setup = function (options, seedLink) {
 
 exports.up = function (db, callback) {
   return db.createTable(
-    'quizzes',
+    'question_choices',
     {
-      quiz_uuid: {
+      question_choice_uuid: {
         type: 'string',
         primaryKey: true,
         length: 36
       },
-      group_uuid: {
+      question_uuid: {
         type: 'string',
         length: 36,
         foreignKey: {
-          name: 'quizz_group_uuid_fk',
-          table: 'groups',
+          name: 'question_choices_question_uuid_fk',
+          table: 'questions',
           rules: {
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
           },
-          mapping: 'group_uuid'
+          mapping: 'question_uuid',
+          notNull: true
         }
       },
-      user_uuid: {
-        type: 'string',
-        length: 36,
-        foreignKey: {
-          name: 'quizz_user_uuid_fk',
-          table: 'users',
-          rules: {
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
-          },
-          mapping: 'user_uuid'
-        }
-      },
-      quiz_name: {
-        type: 'string',
-        notNull: true
-      },
-      quiz_description: {
+      content: {
         type: 'text',
-        notNull: false
-      },
-      duration: { type: 'int', notNull: true, defaultValue: 60 },
-      is_private: {
-        type: 'smallint',
-        notNull: true,
-        defaultValue: 0
+        notNull: true
       },
       created_at: {
         type: 'timestamp',
@@ -81,7 +59,7 @@ exports.up = function (db, callback) {
 }
 
 exports.down = function (db, callback) {
-  return db.dropTable('quizzes', callback)
+  return db.dropTable('question_choices', callback)
 }
 
 exports._meta = {

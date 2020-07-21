@@ -5,6 +5,7 @@ class Query {
     this.makeCondition = this.makeCondition.bind(this)
     this.makeUpdateQuery = this.makeUpdateQuery.bind(this)
     this.makeInsertQuery = this.makeInsertQuery.bind(this)
+    this.makeMultipleInsertQuery = this.makeMultipleInsertQuery.bind(this)
   }
 
   makeCondition(conditions) {
@@ -45,6 +46,29 @@ class Query {
     values = values.join(', ')
 
     return `INSERT INTO ${tableName} (${columns}) VALUES (${values}) `
+  }
+
+  makeMultipleInsertQuery(tableName, dataArrayObject) {
+    let columns = []
+    let values = []
+    for (const [key, _value] of Object.entries(dataArrayObject[0])) {
+      columns.push(key)
+    }
+
+    for (const obj of dataArrayObject) {
+      const objValues = []
+      for (const [_key, value] of Object.entries(obj)) {
+        objValues.push(!value ? 'NULL' : `'${value}'`)
+      }
+
+      const valueToPush = `(${objValues.join(', ')})`
+      values.push(valueToPush)
+    }
+
+    columns = columns.join(', ')
+    values = values.join(', ')
+
+    return `INSERT INTO ${tableName} (${columns}) VALUES ${values}`
   }
 }
 

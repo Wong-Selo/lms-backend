@@ -3,6 +3,7 @@ const userRoute = require('@module/user/user.route')
 const profileRoute = require('@module/profile/profile.route')
 const groupRoute = require('@module/group/group.route')
 const quizzRoute = require('@module/quizz/quizz.route')
+const questionRoute = require('@module/question/question.route')
 
 const authMiddleware = require('@middleware/authentication')
 
@@ -16,4 +17,5 @@ module.exports = (app) => {
   profileRoute(app)
   groupRoute(app)
   quizzRoute(app)
+  questionRoute(app)
 }

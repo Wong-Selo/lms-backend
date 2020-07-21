@@ -27,6 +27,27 @@ class QuizzModel {
 
     return result
   }
+
+  async getByQuizId(quizId) {
+    const query = `SELECT * FROM ${this.table} WHERE quiz_uuid = $1`
+    const result = await this.dbConnection.one(query, [quizId])
+
+    return result
+  }
+
+  async getByUserId(userId) {
+    const query = `SELECT * FROM ${this.table} WHERE user_uuid = $1`
+    const result = await this.dbConnection.query(query, [userId])
+
+    return result
+  }
+
+  async getByGroupId(quizId) {
+    const query = `SELECT * FROM ${this.table} WHERE group_uuid = $1`
+    const result = await this.dbConnection.query(query, [quizId])
+
+    return result
+  }
 }
 
 module.exports = QuizzModel

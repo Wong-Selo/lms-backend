@@ -8,6 +8,7 @@
   },
   "errors": {
     "bad_request": "Bad Request",
+    "must_an_array": "$_variable must be an array",
     "user": {
       "not_found": "User not found",
       "confirm_password_missmatch": "Password and confirm password is missmatch",
@@ -34,6 +35,13 @@
       "not_member": "User $_variable is not a member",
       "group_full": "Group has already full",
       "decrease_max_member": "Max member must be grether than current total group member. Please remove some member to decrease max member. Current member: $_current_max; max_member: $_max_member"
+    },
+    "question": {
+      "not_in_types": "type must but one of $_variable",
+      "must_contain_choices": "type multiple must be contains choices"
+    },
+    "quiz": {
+      "not_found": "Quiz not found"
     }
   }
 }
