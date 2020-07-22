@@ -11,6 +11,12 @@ const tags = {
     },
     {
       name: 'Groups'
+    },
+    {
+      name: 'Quizzes'
+    },
+    {
+      name: 'Questions'
     }
   ]
 }
