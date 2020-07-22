@@ -4,6 +4,8 @@ const authDoc = require('./Auth')
 const userDoc = require('./User')
 const profileDoc = require('./Profile')
 const groupDoc = require('./Group')
+const quizDoc = require('./Quiz')
+const questionDoc = require('./Question')
 
 const openApiDocumentaion = {
   ...basicInfo,
@@ -12,7 +14,9 @@ const openApiDocumentaion = {
     ...authDoc.paths,
     ...userDoc.paths,
     ...profileDoc.paths,
-    ...groupDoc.paths
+    ...groupDoc.paths,
+    ...quizDoc.paths,
+    ...questionDoc.paths
   }
 }
 

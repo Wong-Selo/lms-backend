@@ -52,6 +52,14 @@ const OtherObject = {
         type: 'string',
         example: 'ce7aa07a-6066-46d7-a3a2-b9b3fe9c6e6b'
       }
+    },
+    quizId: {
+      name: 'quizId',
+      in: 'path',
+      schema: {
+        type: 'string',
+        example: 'c038b2c9-b973-4113-a35f-8e86000a8794'
+      }
     }
   },
   responses: {
