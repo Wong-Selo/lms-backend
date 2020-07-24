@@ -10,6 +10,17 @@ const responses = {
   }
 }
 
+const token = {
+  name: 'token',
+  in: 'query',
+  schema: {
+    type: 'string',
+    example:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJ6YUB3YXJ1ZG8uZGlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.r2Ebor2AMkm-NA890hgz1rO98Fyu5KNcFNws43prwrw'
+  },
+  required: true
+}
+
 const authDoc = {
   paths: {
     '/auth/sign-in': {
@@ -43,6 +54,14 @@ const authDoc = {
           },
           required: true
         },
+        responses: { ...responses }
+      }
+    },
+    '/auth/verify': {
+      get: {
+        tags: ['Authentication'],
+        description: 'Activate user (email verification)',
+        parameters: [token],
         responses: { ...responses }
       }
     }
