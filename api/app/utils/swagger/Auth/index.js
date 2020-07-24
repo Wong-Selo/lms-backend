@@ -10,7 +10,7 @@ const responses = {
   }
 }
 
-token = {
+const token = {
   name: 'token',
   in: 'query',
   schema: {
