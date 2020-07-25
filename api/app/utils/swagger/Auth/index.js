@@ -25,6 +25,7 @@ const authDoc = {
   paths: {
     '/auth/sign-in': {
       post: {
+        security: [],
         tags: ['Authentication'],
         description: 'Sign in with email and password',
         requestBody: {
@@ -42,6 +43,7 @@ const authDoc = {
     },
     '/auth/sign-up': {
       post: {
+        security: [],
         tags: ['Authentication'],
         description: 'Sign up with email and password',
         requestBody: {
@@ -59,6 +61,7 @@ const authDoc = {
     },
     '/auth/verify': {
       get: {
+        security: [],
         tags: ['Authentication'],
         description: 'Activate user (email verification)',
         parameters: [token],

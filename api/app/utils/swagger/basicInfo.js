@@ -3,16 +3,7 @@ const basicInfo = {
   info: {
     version: '1.3.0',
     title: 'Wong Selo - LMS API',
-    description: 'API documentations for LMS',
-    contact: {
-      name: 'Fizi Kurniawan',
-      email: 'hi@fizi.dev',
-      url: 'https://fizi.dev'
-    },
-    license: {
-      name: 'Apache 2.0',
-      url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
-    }
+    description: 'API documentations for LMS'
   },
   servers: [
     {
