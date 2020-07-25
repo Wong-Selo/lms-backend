@@ -60,6 +60,14 @@ const OtherObject = {
         type: 'string',
         example: 'c038b2c9-b973-4113-a35f-8e86000a8794'
       }
+    },
+    questionId: {
+      name: 'questionId',
+      in: 'path',
+      schema: {
+        type: 'string',
+        example: 'c038b2c9-b973-4113-a35f-8e86000a8794'
+      }
     }
   },
   responses: {

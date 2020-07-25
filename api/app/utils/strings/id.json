@@ -38,7 +38,8 @@
     },
     "question": {
       "not_in_types": "type harus diantara $_variable",
-      "must_contain_choices": "type multiple harus memiliki choices"
+      "must_contain_choices": "type multiple harus memiliki choices",
+      "not_found": "Question tidak ditemukan"
     },
     "quiz": {
       "not_found": "Quiz tidak ditemukan"

@@ -21,6 +21,8 @@ class QuizzController {
     this.objectManipulation = new ObjectManipulation()
 
     this.createQuestion = this.createQuestion.bind(this)
+    this.getQuestion = this.getQuestion.bind(this)
+    this.deleteQuestion = this.deleteQuestion.bind(this)
   }
 
   async createQuestion(req, res) {
@@ -127,6 +129,55 @@ class QuizzController {
     } = await this.questionChoiceModel.createChoices(dataChoicesToInsert)
 
     if (insertChoices) return res.sendError(insertChoices)
+
+    return res.sendSuccess()
+  }
+
+  async getQuestion(req, res) {
+    const { id: question_uuid } = req.params
+    const {
+      data: question,
+      errors: getQuestionError
+    } = await this.questionModel.getQuestionById(question_uuid)
+
+    if (getQuestionError) return res.sendError(getQuestionError)
+    if (!question)
+      return res.sendError(
+        {
+          question_uuid: req.strings.errors.question.not_found
+        },
+        req.strings.errors.question.not_found
+      )
+
+    const {
+      data: choices,
+      errors: getChoicesError
+    } = await this.questionChoiceModel.getChoicesByQuestionId(question_uuid)
+    if (getChoicesError) return res.sendError(getChoicesError)
+
+    return res.sendSuccess({ ...question, choices })
+  }
+
+  async deleteQuestion(req, res) {
+    const { id: question_uuid } = req.params
+    const {
+      data: question,
+      errors: getQuestionError
+    } = await this.questionModel.getQuestionById(question_uuid)
+
+    if (getQuestionError) return res.sendError(getQuestionError)
+    if (!question)
+      return res.sendError(
+        {
+          question_uuid: req.strings.errors.question.not_found
+        },
+        req.strings.errors.question.not_found
+      )
+
+    const { errors: deleteError } = await this.questionModel.delete(
+      question_uuid
+    )
+    if (deleteError) return res.sendError(deleteError)
 
     return res.sendSuccess()
   }
