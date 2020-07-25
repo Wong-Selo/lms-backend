@@ -1,6 +1,6 @@
 const schemas = require('./schema')
 const { responses, parameters } = require('../other')
-const { token } = parameters
+const { token, questionId } = parameters
 const { CreateQuestion } = schemas
 
 const quizDoc = {
@@ -21,6 +21,22 @@ const quizDoc = {
             }
           }
         },
+        responses: { ...responses }
+      }
+    },
+    '/questions/detail/{questionId}': {
+      get: {
+        tags: ['Questions'],
+        description: 'Get detail Qestion',
+        parameters: [token, questionId],
+        responses: { ...responses }
+      }
+    },
+    '/questions/delete/{questionId}': {
+      delete: {
+        tags: ['Questions'],
+        description: 'Delete question',
+        parameters: [token, questionId],
         responses: { ...responses }
       }
     }

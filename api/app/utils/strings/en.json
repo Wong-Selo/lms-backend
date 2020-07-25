@@ -38,7 +38,8 @@
     },
     "question": {
       "not_in_types": "type must but one of $_variable",
-      "must_contain_choices": "type multiple must be contains choices"
+      "must_contain_choices": "type multiple must be contains choices",
+      "not_found": "Question not found"
     },
     "quiz": {
       "not_found": "Quiz not found"

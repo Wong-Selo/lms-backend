@@ -54,6 +54,20 @@ class QustionModel {
 
     return result
   }
+
+  async getQuestionById(questionId) {
+    const query = `SELECT * FROM ${this.table} WHERE question_uuid = $1`
+    const result = await this.dbConnection.one(query, [questionId])
+
+    return result
+  }
+
+  async delete(questionId) {
+    const query = `DELETE FROM ${this.table} WHERE question_uuid = $1`
+    const result = await this.dbConnection.one(query, [questionId])
+
+    return result
+  }
 }
 
 module.exports = QustionModel
