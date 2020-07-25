@@ -10,6 +10,9 @@ const questionDoc = require('./Question')
 const openApiDocumentaion = {
   ...basicInfo,
   ...tags,
+  security: [{
+    ApiKeyAuth: []
+  }],
   paths: {
     ...authDoc.paths,
     ...userDoc.paths,
@@ -17,6 +20,16 @@ const openApiDocumentaion = {
     ...groupDoc.paths,
     ...quizDoc.paths,
     ...questionDoc.paths
+  },
+  components: {
+    securitySchemes: {
+      ApiKeyAuth: {
+        description: `put header with name "token". Token value got from sign-in end-point. Please read authentication end-points`,
+        type: "apiKey",
+        name: "token",
+        in: "header"
+      }
+    }
   }
 }
 
