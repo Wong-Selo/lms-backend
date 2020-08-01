@@ -22,6 +22,7 @@ class QuizzController {
     this.createQuizz = this.createQuizz.bind(this)
     this.getQuizzes = this.getQuizzes.bind(this)
     this.getQuiz = this.getQuiz.bind(this)
+    this.deleteQuiz = this.deleteQuiz.bind(this)
   }
 
   async _userHasMember(req, res, groupId, userId) {
@@ -145,6 +146,26 @@ class QuizzController {
       ...dataQuiz,
       questions: dataQuestion
     })
+  }
+
+  async deleteQuiz(req, res) {
+    const { id: quizId } = req.params
+
+    const {
+      data: quizExist,
+      errors: quizError
+    } = await this.quizzModel.getByQuizId(quizId)
+    if (quizError) return res.sendError(quizError)
+
+    if (!quizExist)
+      return res.sendError({
+        quiz_uuid: req.strings.errors.quiz.not_found
+      })
+
+    const { errors: deleteQuizError } = await this.quizzModel.deleteQuiz(quizId)
+    if (deleteQuizError) return res.sendError(deleteQuizError)
+
+    return res.sendSuccess()
   }
 }
 

@@ -38,6 +38,14 @@ const quizDoc = {
         parameters: [token, quizId],
         responses: { ...responses }
       }
+    },
+    '/quizzes/delete/{quizId}': {
+      delete: {
+        tags: ['Quizzes'],
+        description: 'delete Quiz',
+        parameters: [token, quizId],
+        responses: { ...responses }
+      }
     }
   }
 }
