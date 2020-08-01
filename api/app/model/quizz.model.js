@@ -48,6 +48,13 @@ class QuizzModel {
 
     return result
   }
+
+  async deleteQuiz(quizId) {
+    const query = `DELETE FROM ${this.table} WHERE quiz_uuid = $1`
+    const result = await this.dbConnection.query(query, [quizId])
+
+    return result
+  }
 }
 
 module.exports = QuizzModel
