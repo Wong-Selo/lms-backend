@@ -8,6 +8,7 @@
   },
   "errors": {
     "bad_request": "Bad Request",
+    "must_an_array": "$_variable must be an array",
     "user": {
       "not_found": "User not found",
       "confirm_password_missmatch": "Password and confirm password is missmatch",
@@ -20,6 +21,28 @@
     "required": "$_variable is required",
     "token": {
       "invalid": "Token is invalid"
+    },
+    "auth": {
+      "unauthorized": "Unauthorized",
+      "in_active": "Your account is not active",
+      "suspended": "Your Account Status is Suspended"
+    },
+    "group": {
+      "group_exist": "Group $_variable already exist",
+      "group_doesnt_exist": "Group $_variable does not exist",
+      "already_joined": "User $_variable has already joined",
+      "dont_have_permission": "You don't have permission to perform this action",
+      "not_member": "User $_variable is not a member",
+      "group_full": "Group has already full",
+      "decrease_max_member": "Max member must be grether than current total group member. Please remove some member to decrease max member. Current member: $_current_max; max_member: $_max_member"
+    },
+    "question": {
+      "not_in_types": "type must but one of $_variable",
+      "must_contain_choices": "type multiple must be contains choices",
+      "not_found": "Question not found"
+    },
+    "quiz": {
+      "not_found": "Quiz not found"
     }
   }
 }

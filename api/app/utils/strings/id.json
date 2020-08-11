@@ -8,6 +8,7 @@
   },
   "errors": {
     "bad_request": "Bad Request",
+    "must_an_array": "$_variable harus array",
     "user": {
       "not_found": "User tidak ditemukan",
       "confirm_password_missmatch": "Password dan confirm password tidak sesuai",
@@ -20,6 +21,28 @@
     "required": "Diperlukan $_variable",
     "token": {
       "invalid": "Token tidak valid"
+    },
+    "auth": {
+      "unauthorized": "Unauthorized",
+      "in_active": "Akun anda tidak aktif",
+      "suspended": "Akun anda telah disuspend"
+    },
+    "group": {
+      "group_exist": "Group $_variable sudah ada",
+      "group_doesnt_exist": "Group $_variable tidak ditemukan",
+      "already_joined": "User $_variable sudah bergabung",
+      "dont_have_permission": "Anda tidak mempunyai akses untuk melaukan aksi ini",
+      "not_member": "User $_variable bukan member",
+      "group_full": "Group sudah penuh",
+      "decrease_max_member": "Maksimal member harus diatas jumlah member saat ini. Hapus beberapa member untuk mengurangi jumlah member. Member saat ini: $_current_max; max_member: $_max_member"
+    },
+    "question": {
+      "not_in_types": "type harus diantara $_variable",
+      "must_contain_choices": "type multiple harus memiliki choices",
+      "not_found": "Question tidak ditemukan"
+    },
+    "quiz": {
+      "not_found": "Quiz tidak ditemukan"
     }
   }
 }

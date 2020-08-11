@@ -1,0 +1,13 @@
+name: Check Lint
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: cd api && npm i
+    - name: Run ESLint and Prettier
+      run: cd api && npm run lint
