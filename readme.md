@@ -39,3 +39,6 @@ $ docker exec -it lms_api db-migrate up
 for reference follow this one 
 https://www.npmjs.com/package/db-migrate
 https://db-migrate.readthedocs.io/en/latest/Getting%20Started/installation/
+
+# Swagger Docs
+http://host:port/api-docs
