@@ -2,6 +2,7 @@
 - [Tech Stack](#tech-stack) 
 - [Initial Step](#initial-step) 
 - [DB Migration](#db-migration) 
+- [Swagger Docs](#swagger-docs)
 
 # Tech Stack
 1. node js express
